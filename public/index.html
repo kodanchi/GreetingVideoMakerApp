@@ -26,11 +26,17 @@
       </div>
     </div>
 
-    <!-- Custom Greeting -->
-    <input type="text" id="customGreeting" class="form-control my-3" placeholder="أو اكتب تهنئتك الخاصة" />
+     <!-- Custom greeting text -->
+     <div class="mb-4 text-center">
+      <h5>اكتب تهنئتك الخاصة (تظهر في منتصف الفيديو)</h5>
+      <input type="text" id="customGreeting" maxlength="50" placeholder="مثال: عيد سعيد!" class="form-control mt-2" dir="rtl" oninput="this.value=this.value.replace(/[^\u0600-\u06FF\s]/g,'')" />
+    </div>
 
-    <!-- Greeter Name -->
-    <input type="text" id="greeter" class="form-control my-3" placeholder="اسم المُرسل (مثال: مع تحيات محمد)" />
+    <!-- Greeter name -->
+    <div class="mb-4 text-center">
+      <h5>اسم المُرسل (يظهر في الأسفل)</h5>
+      <input type="text" id="greeterName" maxlength="30" placeholder="مثال: مع تحيات محمد" class="form-control mt-2" dir="rtl" oninput="this.value=this.value.replace(/[^\u0600-\u06FF\s]/g,'')" />
+    </div>
 
     <!-- Video thumbnails -->
     <h5 class="mt-4">اختر الفيديو</h5>
@@ -40,6 +46,12 @@
       </div>
       <div class="col-6 col-md-3">
         <img src="thumbnails/thumb2.jpg" class="img-fluid video-thumb" data-src="videos/video2.mp4" />
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="thumbnails/thumb3.jpg" class="img-fluid video-thumb" data-src="videos/video3.mp4" />
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="thumbnails/thumb4.jpg" class="img-fluid video-thumb" data-src="videos/video4.mp4" />
       </div>
       <!-- Add more as needed -->
     </div>
@@ -91,7 +103,7 @@
       link.style.display = "none";
 
       try {
-        const response = await fetch("/api/generate", {
+        const response = await fetch("https://ffmpeg-vercel-api.vercel.app/api/generate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
