@@ -34,7 +34,7 @@ greetingButtons.forEach(btn => {
 
 async function generateVideo() {
   const customGreeting = document.getElementById('customGreeting').value.trim();
-  const greeterName = document.getElementById('greeterName').value.trim();
+  const greeterName = document.getElementById('greeter').value.trim();
   const greetingText = customGreeting || selectedGreeting;
 
   if (!selectedVideo || !greetingText || !greeterName) {
@@ -45,7 +45,7 @@ async function generateVideo() {
   const status = document.getElementById('status');
   const progressBar = document.getElementById('progressBar');
   const video = document.getElementById('outputVideo');
-  const downloadBtn = document.getElementById('downloadBtn');
+  const downloadBtn = document.getElementById('downloadLink');
   const successMsg = document.getElementById('successMsg');
 
   status.innerText = 'جاري تجهيز الفيديو...';
